@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>
+        
+            Java开发环境安装步骤
+        
+    </title>
+    <link rel="shortcut icon" href="#"/>
+
+    <link type="text/css" rel="stylesheet" href="/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSerifSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="/font/Roboto.css">
+    <link type="text/css" rel="stylesheet" href="/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/css/code.css">
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <a id="cover"></a>
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
+    <div class="vertical">
+        <div class="inner">
+            
+                <h1 class="header-subtitle">Java开发环境安装步骤</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-04-08
+                        </span>
+                        
+                            
+                                <span id="/2023/04/08/java/Java开发环境安装步骤/" class="leancloud_visitors" data-flag-title="Java开发环境安装步骤">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/08/java/Java开发环境安装步骤/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">测试</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">java</span>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+</div>
+<div id="container">
+    
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="Java开发环境安装步骤"><a href="#Java开发环境安装步骤" class="headerlink" title="Java开发环境安装步骤"></a>Java开发环境安装步骤</h1><h2 id="一、安装JDK"><a href="#一、安装JDK" class="headerlink" title="一、安装JDK"></a>一、安装JDK</h2><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ouZ9i6mRBLL7Mf71oUfj6A">https://pan.baidu.com/s/1ouZ9i6mRBLL7Mf71oUfj6A</a><br>提取码：root</p>
+<h3 id="1、运行jdk安装包"><a href="#1、运行jdk安装包" class="headerlink" title="1、运行jdk安装包"></a>1、运行jdk安装包</h3><p>一直点击下一步，可以根据需求修改安装路径</p>
+<h3 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h3><pre><code>在我们编译程序时，我们需要用到javac这个编译工具，而javac是在java的安装目录下的，当我们在其他目录调用javac时，系统因为在当前目录找不到就会报错，为了方便我们以后编译程序，不要每次编译的时候就跑到java安装目录中去，所以我们来设置环境变量。
+</code></pre>
+<p>步骤：<br>右击计算机→属性→高级系统设置→高级→环境变量<br><strong>（1）下面系统变量新建：</strong><br>变量名固定，变量值为JDK的安装目录<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409101418523.png" alt="image-20230409101418523"><br><strong>（2）在系统变量中找到”Path” **<br>选中”Path“点击”编辑“选项<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295771424-72bb519c-d5a5-4740-ba98-4be31b318f7a.png#averageHue=%23f0efee&clientId=u1b3c1a24-ff2d-4&from=paste&height=139&id=u3c827f0f&name=1671246293607.png&originHeight=209&originWidth=836&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12407&status=done&style=none&taskId=u1ec7cb7c-5021-428b-9be4-b7031b0b94d&title=&width=557.3333333333334" alt="1671246293607.png"><br><strong>选择右边的“编辑文本”</strong>将引号里面的全部复制</strong>“%Java_Home%\bin;%Java_Home%\jre\bin;”**，点击确定。</p>
+<h3 id="3、查看是否安装成功"><a href="#3、查看是否安装成功" class="headerlink" title="3、查看是否安装成功"></a>3、查看是否安装成功</h3><p>快捷键win+R，输入cmd<br>输入“java”效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295820202-d973d8e8-a1b9-41d8-a6b2-8cc19b53c77d.png#averageHue=%231a1a1a&clientId=u1b3c1a24-ff2d-4&from=paste&height=432&id=u6ec849be&name=1671245522817.png&originHeight=648&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=65474&status=done&style=none&taskId=u9db095d6-fe80-4598-90f4-17269ccbab4&title=&width=438" alt="1671245522817.png"><br>输入javac<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295847392-bf1b377d-2788-47a8-8866-4241deeb70ac.png#averageHue=%231a1a1a&clientId=u1b3c1a24-ff2d-4&from=paste&height=341&id=u670f70ec&name=1671246379294.png&originHeight=511&originWidth=1128&originalType=binary&ratio=1&rotation=0&showTitle=false&size=90805&status=done&style=none&taskId=u9cab4968-c57e-452e-aec2-1c80b15c678&title=&width=752" alt="1671246379294.png"><br>查看版本号，输入“java -version”，效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295866821-169403ab-f9a5-42ed-8e0b-d5a4a7d50dbc.png#averageHue=%231c1c1c&clientId=u1b3c1a24-ff2d-4&from=paste&height=77&id=uda3bb65f&name=1671245554248.png&originHeight=116&originWidth=793&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16272&status=done&style=none&taskId=u5a888e05-8d43-49c0-a085-2ef7abdbd99&title=&width=528.6666666666666" alt="1671245554248.png"></p>
+<h2 id="二、安装IDEA永久激活"><a href="#二、安装IDEA永久激活" class="headerlink" title="二、安装IDEA永久激活"></a>二、安装IDEA永久激活</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.exception.site/">https://www.exception.site/</a></p>
+<h3 id="1、下载IDEA"><a href="#1、下载IDEA" class="headerlink" title="1、下载IDEA"></a>1、下载IDEA</h3><ul>
+<li>通过官网下载idea</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download">https://www.jetbrains.com/idea/download</a></p>
+<ul>
+<li>百度网盘自取，版本是2022.2.3</li>
+</ul>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1koIY_aMpWZuH1kxx7KqYsg">https://pan.baidu.com/s/1koIY_aMpWZuH1kxx7KqYsg</a><br>提取码：root<br><strong>下载完成之后双击运行</strong></p>
+<h3 id="2、安装"><a href="#2、安装" class="headerlink" title="2、安装"></a>2、安装</h3><blockquote>
+<p>安装之前如果安装过，卸载</p>
+</blockquote>
+<p><strong>选择安装的文件路径，下一步，勾选创建桌面快捷方式。</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295982578-59dc44c0-94f6-4304-9f33-cfe58eea4c34.png#averageHue=%23ecebea&clientId=u1b3c1a24-ff2d-4&from=paste&height=320&id=u1b3e05d4&name=1671349926395.png&originHeight=480&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31156&status=done&style=none&taskId=u554f8881-2798-4d8d-afe3-2022bf1c012&title=&width=388" alt="1671349926395.png"><br><strong>点击Install:</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296016036-fe417c12-1cad-44dc-907b-13f8f959f2d7.png#averageHue=%23f4f2f1&clientId=u1b3c1a24-ff2d-4&from=paste&height=319&id=uf22dfe2c&name=1671350018235.png&originHeight=479&originWidth=586&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32572&status=done&style=none&taskId=u2c2376bf-eb68-4f9f-9eb4-5cdb53ce9dd&title=&width=390.6666666666667" alt="1671350018235.png"><br><strong>勾选run，并点击Finish按钮</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296110969-e1b52368-1c6e-4b0e-bfd3-0dd8f68e9772.png#averageHue=%23e9d28d&clientId=u1b3c1a24-ff2d-4&from=paste&height=317&id=u9772a958&name=1671350181867.png&originHeight=476&originWidth=585&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48145&status=done&style=none&taskId=u9cd694ea-2cfd-4c49-a4d9-48d1f486c27&title=&width=390" alt="1671350181867.png"><br><strong>进入后需要登录账号，这里直接点击exit退出，装备开始破解激活。</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296135625-69ddfcc8-1efc-4042-8246-a4d13c7f81bf.png#averageHue=%233c4146&clientId=u1b3c1a24-ff2d-4&from=paste&height=390&id=u0e64ca58&name=1671350256748.png&originHeight=585&originWidth=975&originalType=binary&ratio=1&rotation=0&showTitle=false&size=30189&status=done&style=none&taskId=ucac3032f-ad61-4063-ad85-cd8ebd8f8a8&title=&width=650" alt="1671350256748.png"></p>
+<h3 id="3、破解"><a href="#3、破解" class="headerlink" title="3、破解"></a>3、破解</h3><p><strong>第一步：补丁下载</strong><br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ds0viiW_dmDz9RVWkw6KaA">https://pan.baidu.com/s/1ds0viiW_dmDz9RVWkw6KaA</a><br>提取码：root<br><strong>第二步：开始破解</strong><br>将jetbra文件夹放入某个目录<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296167700-765674c6-994a-4d96-b84e-6da68cb70bb4.png#averageHue=%23fcf9f8&clientId=u1b3c1a24-ff2d-4&from=paste&height=223&id=ue3be4742&name=1671350850911.png&originHeight=334&originWidth=809&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25693&status=done&style=none&taskId=ub565c7f3-29a8-4d1a-aa4d-70f496b34ba&title=&width=539.3333333333334" alt="1671350850911.png"><br>进入scripts文件夹下，双击install-current-user.vbs<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296193644-b8b6ecdf-ce76-4bf4-a07a-fb86b72562cf.png#averageHue=%23fbf6f6&clientId=u1b3c1a24-ff2d-4&from=paste&height=247&id=u4eac4d22&name=1671350997885.png&originHeight=371&originWidth=845&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31828&status=done&style=none&taskId=u9a3e5c69-a002-4338-8f38-b54662e71f1&title=&width=563.3333333333334" alt="1671350997885.png"><br>弹出安全提示，点击确定即可<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296208913-659f1a90-760b-4a41-b388-7f2071852091.png#averageHue=%23f6f3f2&clientId=u1b3c1a24-ff2d-4&from=paste&height=153&id=u4f29bd77&name=1671351077852.png&originHeight=230&originWidth=490&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20749&status=done&style=none&taskId=ue9f036dc-c7c2-4f54-8a03-0336de1df27&title=&width=326.6666666666667" alt="1671351077852.png"><br>会提示安装补丁需要等待数秒。点击【<strong>确定</strong>】按钮后，过程大概 10 - 30 秒，如看到弹框提示 <code>Done</code> 时，表示激活破解成功：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296236800-88dc1170-6aea-428a-9668-4061d6052e81.png#averageHue=%23f1f0f0&clientId=u1b3c1a24-ff2d-4&from=paste&height=131&id=ud6fe8adf&name=1671351096831.png&originHeight=197&originWidth=181&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4628&status=done&style=none&taskId=ue13dcadc-ce98-474a-a3fb-933df4486c4&title=&width=120.66666666666667" alt="1671351096831.png"><br><strong>第三步：重启IDEA</strong><br>脚本执行成功后，一定要重启 IDEA !!!</p>
+<h3 id="4、填入指定激活码完成激活"><a href="#4、填入指定激活码完成激活" class="headerlink" title="4、填入指定激活码完成激活"></a>4、填入指定激活码完成激活</h3><p>重新打开 IDEA 后，复制下面的激活码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6G5NXCPJZB-eyJsaWNlbnNlSWQiOiI2RzVOWENQSlpCIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBEQiIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiSUkiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOmZhbHNlfSx7ImNvZGUiOiJQUEMiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBHTyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFNXIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBQUyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFJCIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0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</span><br></pre></td></tr></table></figure>
+<p><strong>粘贴到输入框内，点击 Activate 按钮，就激活成功了。</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296343657-dc312af1-35a6-4e12-84c6-c33d9c1c92d6.png#averageHue=%233f4549&clientId=u1b3c1a24-ff2d-4&from=paste&height=350&id=u88bc2f11&name=1671351337351.png&originHeight=525&originWidth=958&originalType=binary&ratio=1&rotation=0&showTitle=false&size=78658&status=done&style=none&taskId=u4ecf265b-3865-4f02-a56b-2f59efe4a3c&title=&width=638.6666666666666" alt="1671351337351.png"></p>
+<h2 id="三、安装Maven"><a href="#三、安装Maven" class="headerlink" title="三、安装Maven"></a>三、安装Maven</h2><h3 id="1、下载Maven"><a href="#1、下载Maven" class="headerlink" title="1、下载Maven"></a>1、下载Maven</h3><p><strong>官网地址</strong><br><a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a><br><strong>百度网盘直接下载</strong><br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1MI_BoDGXt6wB1wzCsScS_w">https://pan.baidu.com/s/1MI_BoDGXt6wB1wzCsScS_w</a><br>提取码：root<br>将下载的maven解压到指定的目录<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296379643-ebec41c1-baa3-417b-8326-b140767b27d6.png#averageHue=%23fbfafa&clientId=u1b3c1a24-ff2d-4&from=paste&height=262&id=u1aa8fb90&name=1671360611327.png&originHeight=393&originWidth=825&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27196&status=done&style=none&taskId=u3de37dc3-a272-4689-bd28-a05eb632fb1&title=&width=550" alt="1671360611327.png"></p>
+<h3 id="2、配置环境变量-1"><a href="#2、配置环境变量-1" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h3><p>右击计算机→属性→高级系统设置→高级→环境变量<br><strong>编辑系统变量</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296398404-11fe228b-058b-4982-ad07-8ebc71be860b.png#averageHue=%23efeded&clientId=u1b3c1a24-ff2d-4&from=paste&height=146&id=u491e4b6c&name=1671360722885.png&originHeight=219&originWidth=838&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16424&status=done&style=none&taskId=u4e6f2a52-32aa-4f48-9d1b-de7f43f1a49&title=&width=558.6666666666666" alt="1671360722885.png"><br><strong>编辑变量名为”Path”的值，将“%MAVEN_HOME%\bin;”添加到变量值前面</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296417162-dab6851a-d183-486b-819e-dfd690fb5a9e.png#averageHue=%23f0eceb&clientId=u1b3c1a24-ff2d-4&from=paste&height=142&id=u298597de&name=1671360843314.png&originHeight=213&originWidth=832&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12947&status=done&style=none&taskId=u119a9667-3872-49c5-add2-a7136b17875&title=&width=554.6666666666666" alt="1671360843314.png"></p>
+<h3 id="3、查看是否安装成功-1"><a href="#3、查看是否安装成功-1" class="headerlink" title="3、查看是否安装成功"></a>3、查看是否安装成功</h3><p>启动CMD命令工具，输入：mvn -v，成功展示maven的版本号。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296456839-dee3931f-a066-418f-aec7-7d4bf30f5a26.png#averageHue=%23231e1e&clientId=u1b3c1a24-ff2d-4&from=paste&height=113&id=u4c05df1f&name=1671360961811.png&originHeight=169&originWidth=1074&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27323&status=done&style=none&taskId=ub9e6cdda-8013-4b73-9ab0-0c80bd43776&title=&width=716" alt="1671360961811.png"></p>
+<h3 id="4、修改Maven仓库下载镜像"><a href="#4、修改Maven仓库下载镜像" class="headerlink" title="4、修改Maven仓库下载镜像"></a>4、修改Maven仓库下载镜像</h3><pre><code>jar包下载慢的原因是服务器在国外，要翻墙才能下载，大约速度在0.9K/s的下载速度，所以我们安装Maven时，要及时的修改Maven下载的镜像地址，最好改为国内的下载镜像，例如阿里云中央仓库，华为云中央仓库。
+</code></pre>
+<p><strong>打开setting.xml</strong><br>在安装目录config文件夹中打开setting.xml,可以使用nodePad++进行编辑，百度网盘地址<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1nHyqCnIksx5rEUE2cdRyJQ">https://pan.baidu.com/s/1nHyqCnIksx5rEUE2cdRyJQ</a><br>提取码：root<br><strong>在标签下添加阿里云镜像</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">	 <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">	 <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">	 <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">	 <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296530251-5913c83f-c6d0-4975-a4c1-c8290071147d.png#averageHue=%23fbf9f9&clientId=u1b3c1a24-ff2d-4&from=paste&height=450&id=uad3fcd4a&name=1671361693014.png&originHeight=675&originWidth=1193&originalType=binary&ratio=1&rotation=0&showTitle=false&size=59001&status=done&style=none&taskId=u7bd12a82-aa24-46d5-b93a-935a9fc222f&title=&width=795.3333333333334" alt="1671361693014.png"></p>
+<h3 id="5、修改默认Maven的仓库位置"><a href="#5、修改默认Maven的仓库位置" class="headerlink" title="5、修改默认Maven的仓库位置"></a>5、修改默认Maven的仓库位置</h3><pre><code>在开发Maven项目过程中会下载非常多的jar包，而Maven默认的下载位置在C盘，C盘很容易撑爆，且C盘容易损毁。
+</code></pre>
+<p><strong>默认的Maven仓库位置为：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\.m2\repository</span><br></pre></td></tr></table></figure>
+<p><strong>在其他盘符创建文件夹命名为repository文件夹</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296637256-f5ca48f2-c661-49c3-88c3-919e57bd9f33.png#averageHue=%23fbfaf9&clientId=u1b3c1a24-ff2d-4&from=paste&height=323&id=u56a2b660&name=1671361898449.png&originHeight=484&originWidth=1030&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48366&status=done&style=none&taskId=ud194efc3-2bba-4173-8b47-e18a21e4fae&title=&width=686.6666666666666" alt="1671361898449.png"><br><strong>配置文件指定默认仓库位置</strong><br>在安装目录config文件夹中打开setting.xml，修改配置文件指定默认仓库位置，上面创建的文件夹的路径将\改为&#x2F;<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296660076-76cce60a-4532-460c-b3f8-e72370b4b800.png#averageHue=%23fdfafa&clientId=u1b3c1a24-ff2d-4&from=paste&height=250&id=u82c4caaa&name=1671362086079.png&originHeight=375&originWidth=1074&originalType=binary&ratio=1&rotation=0&showTitle=false&size=47846&status=done&style=none&taskId=u06e3d36c-9cb9-476c-bdf7-a3c279a61af&title=&width=716" alt="1671362086079.png"></p>
+<h3 id="6、在Idea上配置Maven工具"><a href="#6、在Idea上配置Maven工具" class="headerlink" title="6、在Idea上配置Maven工具"></a>6、在Idea上配置Maven工具</h3><p>打开我们的开发工具Idea，在setting中搜索maven<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296675793-5b9fa8bf-9616-4615-a7a8-63dec5f30da5.png#averageHue=%23404549&clientId=u1b3c1a24-ff2d-4&from=paste&height=83&id=u56ffa5cd&name=1671362747724.png&originHeight=125&originWidth=906&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17549&status=done&style=none&taskId=u1a8e06a2-e45e-4f48-8234-7d8b319e688&title=&width=604" alt="1671362747724.png"><br>安装maven结束</p>
+<h2 id="四、Navicat12破解安装"><a href="#四、Navicat12破解安装" class="headerlink" title="四、Navicat12破解安装"></a>四、Navicat12破解安装</h2><h3 id="1、下载安装包"><a href="#1、下载安装包" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h3><p>百度网盘直接下载<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1FqFpNn6VHenc2fXmQT7qxQ">https://pan.baidu.com/s/1FqFpNn6VHenc2fXmQT7qxQ</a><br>提取码：root</p>
+<h3 id="2、安装并破解"><a href="#2、安装并破解" class="headerlink" title="2、安装并破解"></a>2、安装并破解</h3><p>将如下两个文件放在Navicat的安装目录下进行破解，双击exe文件安装Navicat。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296717515-f8a98e95-e1f7-45e9-bc1d-650917ed87b5.png#averageHue=%23fbf4f2&clientId=u1b3c1a24-ff2d-4&from=paste&height=117&id=u643b484f&name=1671363619139.png&originHeight=176&originWidth=777&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15725&status=done&style=none&taskId=uf4e5c472-2b16-41c2-ba38-d070120f89b&title=&width=518" alt="1671363619139.png"><br><strong>安装成功弹窗</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296776570-044ea3f6-7e1b-4e27-a466-af443769a0d9.png#averageHue=%23f4f2f1&clientId=u1b3c1a24-ff2d-4&from=paste&height=193&id=u8eb5e3b3&name=1671362985524.png&originHeight=289&originWidth=512&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19830&status=done&style=none&taskId=ucc4ab989-657c-43b7-92c7-d94f9451da1&title=&width=341.3333333333333" alt="1671362985524.png"></p>
+<h2 id="五、Git安装"><a href="#五、Git安装" class="headerlink" title="五、Git安装"></a>五、Git安装</h2><h3 id="1、安装包下载"><a href="#1、安装包下载" class="headerlink" title="1、安装包下载"></a>1、安装包下载</h3><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1j5UQNTC8KHn6m7WoT7KzdQ">https://pan.baidu.com/s/1j5UQNTC8KHn6m7WoT7KzdQ</a><br>提取码：root</p>
+<h3 id="2、安装Git"><a href="#2、安装Git" class="headerlink" title="2、安装Git"></a>2、安装Git</h3><p>傻瓜式安装，一直点击下一步，不用勾选任何东西。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674296811416-0c35538b-a334-4626-bf8e-6e9eb826dea1.png#averageHue=%23f6eeec&clientId=u1b3c1a24-ff2d-4&from=paste&height=344&id=u400f56ee&name=1671454818190.png&originHeight=516&originWidth=732&originalType=binary&ratio=1&rotation=0&showTitle=false&size=190190&status=done&style=none&taskId=u0277e383-adbf-4b82-9bfd-cebc3767258&title=&width=488" alt="1671454818190.png"></p>
+<h2 id="六、MobaXterm远程终端控制软件"><a href="#六、MobaXterm远程终端控制软件" class="headerlink" title="六、MobaXterm远程终端控制软件"></a>六、MobaXterm远程终端控制软件</h2><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cRuvciVS_6snKcIO46-Svw">https://pan.baidu.com/s/1cRuvciVS_6snKcIO46-Svw</a><br>提取码：root</p>
+<h2 id="七、Nodejs安装"><a href="#七、Nodejs安装" class="headerlink" title="七、Nodejs安装"></a>七、Nodejs安装</h2><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YJ7fD8hZujvMzedYVuIFaA">https://pan.baidu.com/s/1YJ7fD8hZujvMzedYVuIFaA</a><br>提取码：root</p>
+<p>傻瓜式安装，一直下一步就行。</p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/img-luhe.jpg" alt="Life For H">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Life For H
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/08/java/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/" target="_blank">Java开发环境安装步骤</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>简单地活着, 肆意又精彩.
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/%E6%B5%8B%E8%AF%95/">测试</a>
+                        
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/java/">java</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
+                    
+                        <a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="prev-prefix">« </a> 上一篇：    <a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="发布于 2023-04-09 10:25">hexo + github搭建个人博客</a>
+                        <br>
+                    
+                    
+                </div>
+            </div>
+            
+    <div class="article-comments">
+        
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+ 
+        </div>
+    
+</div>
+    <div id="footer">
+    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>
+</div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        
+            <div class="menu-notice">
+                <span class="iconfont icon-notice"></span>
+                <div class="notice">
+                    <span>及时当勉励，岁月不待人!</span>
+                </div>
+            </div>
+        
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar">
+                    <img src="/image/sidebar/img-luhe.jpg">
+                </div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span>Life For H</span></div>
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul>
+                    
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                    
+                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                    
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                    
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                    
+                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
+                    
+                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
+                    
+                        <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
+                    
+                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
+                    
+                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
+                    
+                </ul> 
+            </div> 
+            <div class="menu-link">
+                <div class="box">
+                    <div class="image-box"></div>
+                </div>
+                
+                    <a name="知乎" href="" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
+                
+                    <a name="微博" href="" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
+                
+                    <a name="QQ" href="javascript:;" class="image" target="_self" data="/image/sidebar/qq.png"><span class="iconfont icon-qq"></span></a>
+                
+                    <a name="微信" href="javascript:;" class="image" target="_self" data="/image/sidebar/wechat.jpg"><span class="iconfont icon-wechat"></span></a>
+                
+                    <a name="GitHub" href="https://github.com/luhecode" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                
+            </div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="/css/search.css">
+<script type="text/javascript" src="/js/iscroll.js"></script>
+<script type="text/javascript" src="/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
+        <script type="text/javascript" src="/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="/js/Meting.min.js"></script>
+        <meting-js id="7105802787" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right">
+        <div class="setting">
+            <div class="iconbox favorites" switch="false">
+                <span class="iconfont icon-favorites"></span>
+                <span class="icontext">关注</span>
+            </div>
+            <div class="iconbox mode">
+                <div class="light">
+                    <span class="iconfont icon-daymode"></span>
+                    <span class="icontext">浅色模式</span>
+                </div>
+                <div class="dark">
+                    <span class="iconfont icon-nightmode-fill"></span>
+                    <span class="icontext">深色模式</span>
+                </div>
+            </div>
+            <a href="javascript:;" target="_self" class="search">
+                <div class="iconbox">
+                    <span class="iconfont icon-search-menu"></span>
+                    <span class="icontext">搜索</span>
+                </div>
+            </a>
+            <div class="iconbox bottom">
+                <div style="display: inline-block; transform: rotate(180deg);">
+                    <span class="iconfont icon-top"></span>
+                </div>
+                <span class="icontext">跳至底部</span>
+            </div>
+        </div>
+        <div class="iconbox set">
+            <div style="display: inline-block;">
+                <span class="iconfont icon-setting"></span>
+            </div>
+            <span class="icontext">设置</span>
+        </div>
+        <div class="iconbox top">
+            <span class="iconfont icon-top"></span>
+            <span class="icontext">返回顶部</span>
+        </div>
+    </div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : "first19326",
+        GitHubRepositories : "Hexo-LiveForCode",
+
+        User             : "Life For H",
+        UserAvatar       : "/image/sidebar/img-luhe.jpg",
+        WebsiteStartDate : "2020-01-01",
+
+        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : "/image/website/logo.png",
+
+        ProgressBar : {
+            id       : "topProgressBar",
+            color    : "#77B6FF",
+            height   : "2px",
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound : {
+                tension  : 16,
+                friction : 5
+            },
+            spinner : {
+                id     : "spinner",
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : "#F0F0F0",
+                    stroke     : "#272633",
+                    base       : "",
+                    child      : "#272633"
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : "rgba(255, 255, 255, .2)",
+            clearOffset : 0.3
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : "60%",
+            colorBrightness  : "50%",
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : "random",
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                "/image/header/home3.jpg",
+            
+                "/image/header/home5.jpg",
+            
+        ],
+        HomeBannerText  : "",
+
+        ArticleHeaderImage : [
+            
+                "/image/header/a4.jpg",
+            
+                "/image/header/a2.jpg",
+            
+        ],
+
+        OtherBannerText : "",
+
+        Error : {
+            icon    : "icon-swimming",
+            title   : "PAGE NOT FOUND",
+            content : [
+                
+                    "很抱歉，您访问的页面不存在！",
+                
+                    "可能是输入地址有误或该地址已变更。",
+                
+            ],
+            buttons : [
+                
+                    {
+                        icon  : "icon-home",
+                        text  : "返回首页",
+                        href  : "/",
+                        class : ""
+                    },
+                
+            ]
+        },
+
+        MenuNotice : {
+            enable : true,
+            notice : "及时当勉励，岁月不待人!",
+            speed  : 20
+        },
+        MenuList : [
+            
+                {
+                    name   : "首页",
+                    icon   : "icon-home-fill",
+                    href   : "/",
+                    type   : "index",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "分类",
+                    icon   : "icon-folder-fill",
+                    href   : "/category",
+                    type   : "category",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "标签",
+                    icon   : "icon-discount-fill",
+                    href   : "/tag",
+                    type   : "tag",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "归档",
+                    icon   : "icon-calendar-fill",
+                    href   : "/archive",
+                    type   : "archive",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "赞赏",
+                    icon   : "icon-heart-fill",
+                    href   : "/donate",
+                    type   : "donate",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "关于",
+                    icon   : "icon-about-fill",
+                    href   : "/about",
+                    type   : "about",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "搜索",
+                    icon   : "icon-search-menu",
+                    href   : "javascript:;",
+                    type   : "",
+                    class  : "search",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "留言板",
+                    icon   : "icon-comments-fill",
+                    href   : "/comment",
+                    type   : "comment",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "友情链接",
+                    icon   : "icon-link",
+                    href   : "/friend",
+                    type   : "friend",
+                    class  : "",
+                    target : "_self"
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        name   : "知乎",
+                        icon   : "icon-zhihu",
+                        href   : "",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "微博",
+                        icon   : "icon-weibo",
+                        href   : "",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "QQ",
+                        icon   : "icon-qq",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "/image/sidebar/qq.png"
+                    },
+                
+                    {
+                        name   : "微信",
+                        icon   : "icon-wechat",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "/image/sidebar/wechat.jpg"
+                    },
+                
+                    {
+                        name   : "GitHub",
+                        icon   : "icon-github",
+                        href   : "https://github.com/luhecode",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>",
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                "Based on cnblogs theme SimpleMemory.",
+                            
+                                "",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "SimpleMemory Author:",
+                            
+                                "BNDong",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "Theme:",
+                            
+                                "LiveForCode",
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : "",
+
+        Donate : {
+            paypal  : "",
+            bitcoin : "",
+            alipay  : "/image/donate/alipay.png",
+            wechat  : "/image/donate/wechat.png"
+        },
+
+        Search : {
+            applicationID : "5J53E0SX8N",
+            apiKey        : "13277927c89fc143982921e92c305b6e",
+            indexName     : "dev-mydata",
+            hits          : {
+                page : 10
+            },
+            labels        : {
+                placeholder : "搜索",
+                empty       : "未发现与 「${query}」 相关的内容",
+                stats       : "${hits} 条相关条目，使用了 ${time} 毫秒",
+            }
+        }, 
+
+        Comment : {
+            switch : true,
+            type   : "Valine",
+        },
+
+        Waline : {
+            el              : ".comments-content",
+            serverURL       : "",
+            path            : window.location.pathname,
+            meta            : "['nick', 'mail', 'link']",
+            requiredMeta    : "['nick', 'mail']",
+            pageSize        : 10,
+            lang            : "zh-cn",
+            locale: {
+                admin       : "博主",
+                anonymous   : "匿名用户",
+                sofa        : "快来做第一个评论的人吧 ~",
+                placeholder : "你是我一生只会遇见一次的惊喜...",
+            },
+            dark            : "html[color-scheme='dark']",
+            search          : false,
+            pageview        : true,
+            comment         : true,
+            copyright       : false,
+        },
+
+        Valine : {
+            el             : ".comments-content",
+            appId          : "mke3IZXmnQfxprLuEB0a0UnP-gzGzoHsz",
+            appKey         : "H73vy2z9nwzxBGt952KFg1dI",
+            serverURLs     : "",
+            placeholder    : "你是我一生只会遇见一次的惊喜...",
+            avatar         : "mm",
+            meta           : "nick,mail,link",
+            requiredFields : "nick,mail",
+            pageSize       : 5,
+            lang           : "zh-cn",
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : ".toc",
+            contentSelector       : ".article-body",
+            headingSelector       : "h1, h2, h3, h4, h5",
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : ".toc",
+            positionFixedClass    : "toc-fixed",
+            fixedSidebarOffset    : "",
+        },
+
+        Require : {
+            baseUrl     : "/js/",
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : "Meting"
+        },
+        APlayer : {
+            container : ".aplayer",
+            fixed     : true,
+            autoplay  : false,
+            loop      : "all",
+            order     : "random",
+            preload   : "auto",
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 3,
+            audio     : [
+                
+                    {
+                        name   : "Endless Tears",
+                        artist : "CLIFF EDGE",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Endless Tears.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : "7105802787", 
+            lrcshow  : false, 
+            server   : "netease", 
+            type     : "playlist", 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : "all", 
+            order    : "random", 
+            preload  : "auto", 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        Mouse : {
+            enable  : true,
+            options : {
+                size  : 6,
+                sizeF : 24
+            }
+        },
+
+        LazyLoad : {
+            default : "/image/website/lazyload.svg"
+        },
+  
+        Style : {
+            aplayer          : "/css/APlayer.css",
+            archive          : "/css/archive.css",
+            base             : "/css/base.css",
+            clipboard        : "/css/clipboard.css",
+            code             : "/css/code.css",
+            donate           : "/css/donate.css",
+            fancybox         : "/css/jquery.fancybox.css",
+            footer           : "/css/footer.css",
+            iconfont         : "/iconfont/iconfont.css",
+            index            : "/css/index.css",
+            menuBubble       : "/css/menu-bubble.css",
+            mouse            : "/css/mouse.css",
+            page             : "/css/page.css",
+            post             : "/css/post.css",
+            search           : "/css/search.css",
+            tocbot           : "/css/tocbot.css",
+            valine           : "/css/valine.css",
+            waline           : "/css/waline.css",
+            walineCustom     : "/css/waline-custom.css"
+        },
+
+        Script: {
+            aplayer          : "/js/APlayer.min.js",
+            config           : "/js/require.config.js",
+            index            : "/js/index.js",
+            instantSearch    : "/js/instantsearch.min.js",
+            iscroll          : "/js/iscroll.js",
+            jQuery           : "/js/jquery-3.4.1.min.js",
+            loading          : "/js/loading.js",
+            meting           : "/js/Meting.min.js",
+            require          : "/js/require.min.js",
+            waline           : "/js/waline.mjs",
+            pageview         : "/js/pageview.mjs",
+            comment          : "/js/comment.mjs",
+        },
+
+        Font: {
+            LongCang    : "/font/LongCang.css",
+            Monda       : "/font/Monda.css",
+            NotoSansSC  : "/font/NotoSansSC.css",
+            NotoSerifSC : "/font/NotoSerifSC.css",
+            Playball    : "/font/Playball.css",
+            PTMono      : "/font/PTMono.css",
+            Roboto      : "/font/Roboto.css",
+            RobotoSlab  : "/font/RobotoSlab.css",
+            Rosario     : "/font/Rosario.css",
+            UbuntuMono  : "/font/UbuntuMono.css"
+        },
+
+        Suffix : {
+            about : "简单地活着, 肆意又精彩."
+        },
+            
+        Theme : {
+            url  : "https://github.com/first19326/Hexo-LiveForCode",
+            name : "Hexo - Live For Code"
+        }  
+    };
+</script>
+    <script type="text/javascript" src="/js/index.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>
