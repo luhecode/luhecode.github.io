@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>
+        
+            市场监管局点餐小程序项目复盘
+        
+    </title>
+    <link rel="shortcut icon" href="#"/>
+
+    <link type="text/css" rel="stylesheet" href="/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSerifSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="/font/Roboto.css">
+    <link type="text/css" rel="stylesheet" href="/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/css/code.css">
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <a id="cover"></a>
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
+    <div class="vertical">
+        <div class="inner">
+            
+                <h1 class="header-subtitle">市场监管局点餐小程序项目复盘</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-04-10
+                        </span>
+                        
+                            
+                                <span id="/2023/04/10/工作任务复盘/项目复盘/" class="leancloud_visitors" data-flag-title="市场监管局点餐小程序项目复盘">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/10/工作任务复盘/项目复盘/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">工作复盘</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">复盘</span>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+</div>
+<div id="container">
+    
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="市场监管局项目复盘"><a href="#市场监管局项目复盘" class="headerlink" title="市场监管局项目复盘"></a>市场监管局项目复盘</h1><p>本项目是为市场监管局开发的一款点餐小程序，使各商户都使用该小程序进行点餐，并对商家进行评价。商家录入菜品及其详细信息，监管局可以在后台监管各商户的菜品以及审批。项目属于刚起步，很多功能都从简，下面记录下开发过程中遇到的坑以及解决方案。</p>
+<h2 id="一、Mybatis更换Mybatis-Plus"><a href="#一、Mybatis更换Mybatis-Plus" class="headerlink" title="一、Mybatis更换Mybatis-Plus"></a>一、Mybatis更换Mybatis-Plus</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>项目使用的若依的框架，若依使用的是mybatis操作数据库，对于一些简单的CRUD明显是麻烦了很多。所以要引入mybatis-plus，但是直接导入mybatis-plus的依赖项目启动会报错，因为他和mybatis会有冲突，解决办法就是在引入mybatis-plus依赖是添加<exclusions>，将mybatis依赖排除一下。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>exclusions标签</strong>：</p>
+<p>这个标签的作用是排除关联依赖的引入，因为maven的pom依赖其中有一点是将关联的依赖全都引入进来 ，这个标签在这的作用就是 如果关联的依赖和引入的其他依赖可能存在冲突，就必须将关联的依赖排除掉，所以就用这个标签。另外这个＋s的，就是可以包含多个。</p>
+<p>另外需要将项目中的mybatis配置删掉，处理完之后项目正常启动。</p>
+<p>(♥◠‿◠)ﾉﾞ  </p>
+<h3 id="添加分页配置"><a href="#添加分页配置" class="headerlink" title="添加分页配置"></a>添加分页配置</h3><p>在使用分页的时候，传Page参数项目启动都没有报错，但是查询出的数据没有分页。经过研究，需要添加分页的配置，在之前项目中都是配置好的，所以没有意识到这东西需要配置，配置信息如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dhcc.framework.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.DbType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisPlusPageConfig</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册插件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>   <span class="comment">//表示此方法返回一个Bean实例</span></span><br><span class="line">    <span class="keyword">public</span> MybatisPlusInterceptor <span class="title function_">mybatisPlusInterceptor</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">MybatisPlusInterceptor</span> <span class="variable">interceptor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MybatisPlusInterceptor</span>();</span><br><span class="line">        <span class="comment">//添加分页插件</span></span><br><span class="line">        <span class="type">PaginationInnerInterceptor</span> <span class="variable">pageInterceptor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PaginationInnerInterceptor</span>();</span><br><span class="line">        <span class="comment">//设置请求的页面大于最大页的操作，true调回首页，false继续请求，默认是false</span></span><br><span class="line">        pageInterceptor.setOverflow(<span class="literal">false</span>);</span><br><span class="line">        <span class="comment">//单页分页的条数限制，默认五限制</span></span><br><span class="line">        pageInterceptor.setMaxLimit(<span class="number">500L</span>);</span><br><span class="line">        <span class="comment">//设置数据库类型</span></span><br><span class="line">        pageInterceptor.setDbType(DbType.MYSQL);</span><br><span class="line"></span><br><span class="line">        interceptor.addInnerInterceptor(pageInterceptor);</span><br><span class="line">        <span class="keyword">return</span> interceptor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、商户登录"><a href="#二、商户登录" class="headerlink" title="二、商户登录"></a>二、商户登录</h2><p>登录之前当然需要注册，注册接口比较简单就是个保存的操作，也没有什么给手机号发短信校验、邮箱什么的，如果项目客户那中意的话后期会逐渐添加。注册是主要就是对密码进行加密，然后存储到数据库，使用SecurityUtils。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtils.encryptPassword(businessDto.getPassword());</span><br></pre></td></tr></table></figure>
+
+<p>登录时前端将用户名和密码传过来，从数据库中查询用户，密码解密对比：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtils.matchesPassword(password, businessPassword);</span><br></pre></td></tr></table></figure>
+
+<p>校验成功后，将商户的社会信用代码作value，将随机生成UUID并拼接固定前缀当作key存入到redis当中，过期时间为30天，并将token给前端返回。当前端调用其他接口时，后端会查询redis，如果没有查询到则不能调用接口，需要重新登录。</p>
+<p>在前端调用接口时，会经过下面的过滤器，只有登录和注册时不需要token，其他接口没有则不能访问接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doFilterInternal</span><span class="params">(HttpServletRequest request, HttpServletResponse response, FilterChain chain)</span></span><br><span class="line">            <span class="keyword">throws</span> ServletException, IOException</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> request.getRequestURL().toString();</span><br><span class="line">        <span class="type">String</span> <span class="variable">customerRegex</span> <span class="operator">=</span> <span class="string">&quot;/customer&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">merchantRegex</span> <span class="operator">=</span> <span class="string">&quot;/merchant&quot;</span>;</span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">customerMatcher</span> <span class="operator">=</span> Pattern.compile(customerRegex).matcher(url);</span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">merchantMatcher</span> <span class="operator">=</span> Pattern.compile(merchantRegex).matcher(url);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(customerMatcher.find())&#123;</span><br><span class="line"><span class="comment">//            this.checkHttpHeaders(request);</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (merchantMatcher.find()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">loginRegex</span> <span class="operator">=</span> <span class="string">&quot;/merchant/business/login&quot;</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">registerRegex</span> <span class="operator">=</span> <span class="string">&quot;/merchant/business/register&quot;</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">uploadRegex</span> <span class="operator">=</span> <span class="string">&quot;/merchant/image/upload&quot;</span>;</span><br><span class="line">            <span class="type">Matcher</span> <span class="variable">loginMatcher</span> <span class="operator">=</span> Pattern.compile(loginRegex).matcher(url);</span><br><span class="line">            <span class="type">Matcher</span> <span class="variable">registerMatcher</span> <span class="operator">=</span> Pattern.compile(registerRegex).matcher(url);</span><br><span class="line">            <span class="type">Matcher</span> <span class="variable">uploadMatcher</span> <span class="operator">=</span> Pattern.compile(uploadRegex).matcher(url);</span><br><span class="line">            <span class="keyword">if</span> (!loginMatcher.find() &amp;&amp; !registerMatcher.find() &amp;&amp; !uploadMatcher.find()) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(<span class="string">&quot;Authorization&quot;</span>);</span><br><span class="line">                <span class="type">String</span> <span class="variable">merchantId</span> <span class="operator">=</span> redisTemplate.opsForValue().get(Constants.MERCHANT_LOGIN + token) + <span class="string">&quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">if</span> (Objects.equals(merchantId, <span class="string">&quot;null&quot;</span>) || StringUtils.isEmpty(merchantId)) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;验证失败请重新登入&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">LoginUser</span> <span class="variable">loginUser</span> <span class="operator">=</span> tokenService.getLoginUser(request);</span><br><span class="line">            <span class="keyword">if</span> (StringUtils.isNotNull(loginUser) &amp;&amp; StringUtils.isNull(SecurityUtils.getAuthentication()))</span><br><span class="line">            &#123;</span><br><span class="line">                tokenService.verifyToken(loginUser);</span><br><span class="line">                <span class="type">UsernamePasswordAuthenticationToken</span> <span class="variable">authenticationToken</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UsernamePasswordAuthenticationToken</span>(loginUser, <span class="literal">null</span>, loginUser.getAuthorities());</span><br><span class="line">                authenticationToken.setDetails(<span class="keyword">new</span> <span class="title class_">WebAuthenticationDetailsSource</span>().buildDetails(request));</span><br><span class="line">                SecurityContextHolder.getContext().setAuthentication(authenticationToken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、使用Swagger"><a href="#三、使用Swagger" class="headerlink" title="三、使用Swagger"></a>三、使用Swagger</h2><p>接口开发完了要进行测试，之前测试使用的是postman，但是postman每次测试接口都要手动输入路径以及一些参数，对于那些简单的crud进行测试我感觉还是挺麻烦的。而且测试完忘记保存下次寻找难，搞不好又要重新编辑请求。正好这个点餐程序是新搭建的项目，可以用来练练各项技术。</p>
+<h3 id="导入Swagger3依赖"><a href="#导入Swagger3依赖" class="headerlink" title="导入Swagger3依赖"></a>导入Swagger3依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Swagger3依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;swagger.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.swagger<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-models<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.swagger<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-models<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加Swagger配置类："><a href="#添加Swagger配置类：" class="headerlink" title="添加Swagger配置类："></a>添加Swagger配置类：</h3><p>使用的若依的框架，基本配置没有变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dhcc.framework.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> io.swagger.models.auth.In;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiKey;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.AuthorizationScope;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.Contact;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.SecurityReference;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.SecurityScheme;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.service.contexts.SecurityContext;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Swagger2的接口配置</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SwaggerConfig</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/** 系统基础配置 */</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RuoYiConfig ruoyiConfig;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 是否开启swagger */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;swagger.enabled&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> enabled;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 设置请求的统一前缀 */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;swagger.pathMapping&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String pathMapping;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建API</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Docket <span class="title function_">createRestApi</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.OAS_30)</span><br><span class="line">                <span class="comment">// 是否启用Swagger</span></span><br><span class="line">                .enable(enabled)</span><br><span class="line">                <span class="comment">// 用来创建该API的基本信息，展示在文档的页面中（自定义展示的信息）</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                <span class="comment">// 设置哪些接口暴露给Swagger展示</span></span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">// 扫描所有有注解的api，用这种方式更灵活</span></span><br><span class="line">                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))</span><br><span class="line">                <span class="comment">// 扫描指定包中的swagger注解</span></span><br><span class="line">                <span class="comment">// .apis(RequestHandlerSelectors.basePackage(&quot;com.ruoyi.project.tool.swagger&quot;))</span></span><br><span class="line">                <span class="comment">// 扫描所有 .apis(RequestHandlerSelectors.any())</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build()</span><br><span class="line">                <span class="comment">/* 设置安全模式，swagger可以设置访问token */</span></span><br><span class="line">                .securitySchemes(securitySchemes())</span><br><span class="line">                .securityContexts(securityContexts())</span><br><span class="line">                .pathMapping(pathMapping);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全模式，这里指定token通过Authorization头请求头传递</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;SecurityScheme&gt; <span class="title function_">securitySchemes</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;SecurityScheme&gt; apiKeyList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;SecurityScheme&gt;();</span><br><span class="line">        apiKeyList.add(<span class="keyword">new</span> <span class="title class_">ApiKey</span>(<span class="string">&quot;Authorization&quot;</span>, <span class="string">&quot;Authorization&quot;</span>, In.HEADER.toValue()));</span><br><span class="line">        <span class="keyword">return</span> apiKeyList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全上下文</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;SecurityContext&gt; <span class="title function_">securityContexts</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;SecurityContext&gt; securityContexts = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        securityContexts.add(</span><br><span class="line">                SecurityContext.builder()</span><br><span class="line">                        .securityReferences(defaultAuth())</span><br><span class="line">                        .operationSelector(o -&gt; o.requestMappingPattern().matches(<span class="string">&quot;/.*&quot;</span>))</span><br><span class="line">                        .build());</span><br><span class="line">        <span class="keyword">return</span> securityContexts;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认的安全上引用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;SecurityReference&gt; <span class="title function_">defaultAuth</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">AuthorizationScope</span> <span class="variable">authorizationScope</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>(<span class="string">&quot;global&quot;</span>, <span class="string">&quot;accessEverything&quot;</span>);</span><br><span class="line">        AuthorizationScope[] authorizationScopes = <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>[<span class="number">1</span>];</span><br><span class="line">        authorizationScopes[<span class="number">0</span>] = authorizationScope;</span><br><span class="line">        List&lt;SecurityReference&gt; securityReferences = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        securityReferences.add(<span class="keyword">new</span> <span class="title class_">SecurityReference</span>(<span class="string">&quot;Authorization&quot;</span>, authorizationScopes));</span><br><span class="line">        <span class="keyword">return</span> securityReferences;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加摘要信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> ApiInfo <span class="title function_">apiInfo</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 用ApiInfoBuilder进行定制</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">                <span class="comment">// 设置标题</span></span><br><span class="line">                .title(<span class="string">&quot;标题：若依管理系统_接口文档&quot;</span>)</span><br><span class="line">                <span class="comment">// 描述</span></span><br><span class="line">                .description(<span class="string">&quot;描述：用于管理集团旗下公司的人员信息,具体包括XXX,XXX模块...&quot;</span>)</span><br><span class="line">                <span class="comment">// 作者信息</span></span><br><span class="line">                .contact(<span class="keyword">new</span> <span class="title class_">Contact</span>(ruoyiConfig.getName(), <span class="literal">null</span>, <span class="literal">null</span>))</span><br><span class="line">                <span class="comment">// 版本</span></span><br><span class="line">                .version(<span class="string">&quot;版本号:&quot;</span> + ruoyiConfig.getVersion())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加接口注解"><a href="#添加接口注解" class="headerlink" title="添加接口注解"></a>添加接口注解</h3><p>@Api(“用户信息管理”)注解用于类上，也就是Controller类上面，标记这个类是被Swagger管理的。</p>
+<p>@ApiOperation(“获取用户列表”)用于方法上面，表示一个http请求操作，参数value的值是设置接口的名称，可以在页面上显示，利于寻找。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api(&quot;用户信息管理&quot;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/test/user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span>&#123;</span><br><span class="line">    <span class="meta">@ApiOperation(&quot;获取用户列表&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;List&lt;UserEntity&gt;&gt; <span class="title function_">userList</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;UserEntity&gt; userList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;UserEntity&gt;(users.values());</span><br><span class="line">        <span class="keyword">return</span> R.ok(userList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><p>配置完这些之后，将项目启动，在浏览器地址栏中输入<a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui/index.html%EF%BC%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7%E4%B8%BA%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%B7%E3%80%82%E8%BF%99%E9%87%8C%E7%9A%84%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80%E8%B7%9FSwagger2%E7%9A%84%E6%9C%89%E6%89%80%E4%B8%8D%E5%90%8C%EF%BC%8CSwagger2%E7%9A%84%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80%E4%B8%BA%EF%BC%9Ahttp://localhost:8080/swagger-ui.html%E3%80%82">http://localhost:8080/swagger-ui/index.html，端口号为项目的端口号。这里的访问地址跟Swagger2的有所不同，Swagger2的访问地址为：http://localhost:8080/swagger-ui.html。</a></p>
+<p>其中<code>Authorization</code>是我们在配置文件中配置的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设置安全模式，swagger可以设置访问token */</span></span><br><span class="line">                .securitySchemes(securitySchemes())</span><br><span class="line">                .securityContexts(securityContexts())</span><br></pre></td></tr></table></figure>
+
+<p>这个就可以把我们登录生成的token发在上面，可以访问需要权限的接口</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230412155034545.png"></p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/img-luhe.jpg" alt="Life For H">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Life For H
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/" target="_blank">市场监管局点餐小程序项目复盘</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>人间枝头，各自乘流。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/%E5%B7%A5%E4%BD%9C%E5%A4%8D%E7%9B%98/">工作复盘</a>
+                        
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/%E5%A4%8D%E7%9B%98/">复盘</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
+                    
+                        <a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev-prefix">« </a> 上一篇：    <a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="发布于 2023-04-15 05:16">单例模式</a>
+                        <br>
+                    
+                    
+                        <a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="next-prefix">» </a> 下一篇：    <a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="发布于 2023-04-09 10:25">hexo + github搭建个人博客</a>
+                    
+                </div>
+            </div>
+            
+    <div class="article-comments">
+        
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+ 
+        </div>
+    
+</div>
+    <div id="footer">
+    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>
+</div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        
+            <div class="menu-notice">
+                <span class="iconfont icon-notice"></span>
+                <div class="notice">
+                    <span>及时当勉励，岁月不待人!</span>
+                </div>
+            </div>
+        
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar">
+                    <img src="/image/sidebar/img-luhe.jpg">
+                </div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span>Life For H</span></div>
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul>
+                    
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                    
+                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                    
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                    
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                    
+                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
+                    
+                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
+                    
+                        <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
+                    
+                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
+                    
+                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
+                    
+                </ul> 
+            </div> 
+            <div class="menu-link">
+                <div class="box">
+                    <div class="image-box"></div>
+                </div>
+                
+                    <a name="知乎" href="" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
+                
+                    <a name="微博" href="" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
+                
+                    <a name="QQ" href="javascript:;" class="image" target="_self" data="/image/sidebar/qq.png"><span class="iconfont icon-qq"></span></a>
+                
+                    <a name="微信" href="javascript:;" class="image" target="_self" data="/image/sidebar/wechat.jpg"><span class="iconfont icon-wechat"></span></a>
+                
+                    <a name="GitHub" href="https://github.com/luhecode" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                
+            </div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="/css/search.css">
+<script type="text/javascript" src="/js/iscroll.js"></script>
+<script type="text/javascript" src="/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
+        <script type="text/javascript" src="/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="/js/Meting.min.js"></script>
+        <meting-js id="7105802787" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right">
+        <div class="setting">
+            <div class="iconbox favorites" switch="false">
+                <span class="iconfont icon-favorites"></span>
+                <span class="icontext">关注</span>
+            </div>
+            <div class="iconbox mode">
+                <div class="light">
+                    <span class="iconfont icon-daymode"></span>
+                    <span class="icontext">浅色模式</span>
+                </div>
+                <div class="dark">
+                    <span class="iconfont icon-nightmode-fill"></span>
+                    <span class="icontext">深色模式</span>
+                </div>
+            </div>
+            <a href="javascript:;" target="_self" class="search">
+                <div class="iconbox">
+                    <span class="iconfont icon-search-menu"></span>
+                    <span class="icontext">搜索</span>
+                </div>
+            </a>
+            <div class="iconbox bottom">
+                <div style="display: inline-block; transform: rotate(180deg);">
+                    <span class="iconfont icon-top"></span>
+                </div>
+                <span class="icontext">跳至底部</span>
+            </div>
+        </div>
+        <div class="iconbox set">
+            <div style="display: inline-block;">
+                <span class="iconfont icon-setting"></span>
+            </div>
+            <span class="icontext">设置</span>
+        </div>
+        <div class="iconbox top">
+            <span class="iconfont icon-top"></span>
+            <span class="icontext">返回顶部</span>
+        </div>
+    </div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : "first19326",
+        GitHubRepositories : "Hexo-LiveForCode",
+
+        User             : "Life For H",
+        UserAvatar       : "/image/sidebar/img-luhe.jpg",
+        WebsiteStartDate : "2023-04-09",
+
+        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : "/image/website/logo.png",
+
+        ProgressBar : {
+            id       : "topProgressBar",
+            color    : "#77B6FF",
+            height   : "2px",
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound : {
+                tension  : 16,
+                friction : 5
+            },
+            spinner : {
+                id     : "spinner",
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : "#F0F0F0",
+                    stroke     : "#272633",
+                    base       : "",
+                    child      : "#272633"
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : "rgba(255, 255, 255, .2)",
+            clearOffset : 0.3
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : "60%",
+            colorBrightness  : "50%",
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : "random",
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                "/image/header/home5.jpg",
+            
+        ],
+        HomeBannerText  : "",
+
+        ArticleHeaderImage : [
+            
+                "/image/header/a4.jpg",
+            
+                "/image/header/a2.jpg",
+            
+        ],
+
+        OtherBannerText : "",
+
+        Error : {
+            icon    : "icon-swimming",
+            title   : "PAGE NOT FOUND",
+            content : [
+                
+                    "很抱歉，您访问的页面不存在！",
+                
+                    "可能是输入地址有误或该地址已变更。",
+                
+            ],
+            buttons : [
+                
+                    {
+                        icon  : "icon-home",
+                        text  : "返回首页",
+                        href  : "/",
+                        class : ""
+                    },
+                
+            ]
+        },
+
+        MenuNotice : {
+            enable : true,
+            notice : "及时当勉励，岁月不待人!",
+            speed  : 20
+        },
+        MenuList : [
+            
+                {
+                    name   : "首页",
+                    icon   : "icon-home-fill",
+                    href   : "/",
+                    type   : "index",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "分类",
+                    icon   : "icon-folder-fill",
+                    href   : "/category",
+                    type   : "category",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "标签",
+                    icon   : "icon-discount-fill",
+                    href   : "/tag",
+                    type   : "tag",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "归档",
+                    icon   : "icon-calendar-fill",
+                    href   : "/archive",
+                    type   : "archive",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "赞赏",
+                    icon   : "icon-heart-fill",
+                    href   : "/donate",
+                    type   : "donate",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "关于",
+                    icon   : "icon-about-fill",
+                    href   : "/about",
+                    type   : "about",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "搜索",
+                    icon   : "icon-search-menu",
+                    href   : "javascript:;",
+                    type   : "",
+                    class  : "search",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "留言板",
+                    icon   : "icon-comments-fill",
+                    href   : "/comment",
+                    type   : "comment",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "友情链接",
+                    icon   : "icon-link",
+                    href   : "/friend",
+                    type   : "friend",
+                    class  : "",
+                    target : "_self"
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        name   : "知乎",
+                        icon   : "icon-zhihu",
+                        href   : "",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "微博",
+                        icon   : "icon-weibo",
+                        href   : "",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "QQ",
+                        icon   : "icon-qq",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "/image/sidebar/qq.png"
+                    },
+                
+                    {
+                        name   : "微信",
+                        icon   : "icon-wechat",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "/image/sidebar/wechat.jpg"
+                    },
+                
+                    {
+                        name   : "GitHub",
+                        icon   : "icon-github",
+                        href   : "https://github.com/luhecode",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>",
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                "Based on cnblogs theme SimpleMemory.",
+                            
+                                "",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "SimpleMemory Author:",
+                            
+                                "BNDong",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "Theme:",
+                            
+                                "LiveForCode",
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : "",
+
+        Donate : {
+            paypal  : "",
+            bitcoin : "",
+            alipay  : "/image/donate/alipay.png",
+            wechat  : "/image/donate/wechat.png"
+        },
+
+        Search : {
+            applicationID : "5J53E0SX8N",
+            apiKey        : "13277927c89fc143982921e92c305b6e",
+            indexName     : "dev-mydata",
+            hits          : {
+                page : 10
+            },
+            labels        : {
+                placeholder : "搜索",
+                empty       : "未发现与 「${query}」 相关的内容",
+                stats       : "${hits} 条相关条目，使用了 ${time} 毫秒",
+            }
+        }, 
+
+        Comment : {
+            switch : true,
+            type   : "Valine",
+        },
+
+        Waline : {
+            el              : ".comments-content",
+            serverURL       : "",
+            path            : window.location.pathname,
+            meta            : "['nick', 'mail', 'link']",
+            requiredMeta    : "['nick', 'mail']",
+            pageSize        : 10,
+            lang            : "zh-cn",
+            locale: {
+                admin       : "博主",
+                anonymous   : "匿名用户",
+                sofa        : "快来做第一个评论的人吧 ~",
+                placeholder : "你是我一生只会遇见一次的惊喜...",
+            },
+            dark            : "html[color-scheme='dark']",
+            search          : false,
+            pageview        : true,
+            comment         : true,
+            copyright       : false,
+        },
+
+        Valine : {
+            el             : ".comments-content",
+            appId          : "mke3IZXmnQfxprLuEB0a0UnP-gzGzoHsz",
+            appKey         : "H73vy2z9nwzxBGt952KFg1dI",
+            serverURLs     : "",
+            placeholder    : "你是我一生只会遇见一次的惊喜...",
+            avatar         : "mm",
+            meta           : "nick,mail,link",
+            requiredFields : "nick,mail",
+            pageSize       : 5,
+            lang           : "zh-cn",
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : ".toc",
+            contentSelector       : ".article-body",
+            headingSelector       : "h1, h2, h3, h4, h5",
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : ".toc",
+            positionFixedClass    : "toc-fixed",
+            fixedSidebarOffset    : "",
+        },
+
+        Require : {
+            baseUrl     : "/js/",
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : "Meting"
+        },
+        APlayer : {
+            container : ".aplayer",
+            fixed     : true,
+            autoplay  : false,
+            loop      : "all",
+            order     : "random",
+            preload   : "auto",
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 3,
+            audio     : [
+                
+                    {
+                        name   : "Endless Tears",
+                        artist : "CLIFF EDGE",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Endless Tears.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : "7105802787", 
+            lrcshow  : false, 
+            server   : "netease", 
+            type     : "playlist", 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : "all", 
+            order    : "random", 
+            preload  : "auto", 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        Mouse : {
+            enable  : true,
+            options : {
+                size  : 6,
+                sizeF : 24
+            }
+        },
+
+        LazyLoad : {
+            default : "/image/website/lazyload.svg"
+        },
+  
+        Style : {
+            aplayer          : "/css/APlayer.css",
+            archive          : "/css/archive.css",
+            base             : "/css/base.css",
+            clipboard        : "/css/clipboard.css",
+            code             : "/css/code.css",
+            donate           : "/css/donate.css",
+            fancybox         : "/css/jquery.fancybox.css",
+            footer           : "/css/footer.css",
+            iconfont         : "/iconfont/iconfont.css",
+            index            : "/css/index.css",
+            menuBubble       : "/css/menu-bubble.css",
+            mouse            : "/css/mouse.css",
+            page             : "/css/page.css",
+            post             : "/css/post.css",
+            search           : "/css/search.css",
+            tocbot           : "/css/tocbot.css",
+            valine           : "/css/valine.css",
+            waline           : "/css/waline.css",
+            walineCustom     : "/css/waline-custom.css"
+        },
+
+        Script: {
+            aplayer          : "/js/APlayer.min.js",
+            config           : "/js/require.config.js",
+            index            : "/js/index.js",
+            instantSearch    : "/js/instantsearch.min.js",
+            iscroll          : "/js/iscroll.js",
+            jQuery           : "/js/jquery-3.4.1.min.js",
+            loading          : "/js/loading.js",
+            meting           : "/js/Meting.min.js",
+            require          : "/js/require.min.js",
+            waline           : "/js/waline.mjs",
+            pageview         : "/js/pageview.mjs",
+            comment          : "/js/comment.mjs",
+        },
+
+        Font: {
+            LongCang    : "/font/LongCang.css",
+            Monda       : "/font/Monda.css",
+            NotoSansSC  : "/font/NotoSansSC.css",
+            NotoSerifSC : "/font/NotoSerifSC.css",
+            Playball    : "/font/Playball.css",
+            PTMono      : "/font/PTMono.css",
+            Roboto      : "/font/Roboto.css",
+            RobotoSlab  : "/font/RobotoSlab.css",
+            Rosario     : "/font/Rosario.css",
+            UbuntuMono  : "/font/UbuntuMono.css"
+        },
+
+        Suffix : {
+            about : "人间枝头，各自乘流。"
+        },
+            
+        Theme : {
+            url  : "https://github.com/first19326/Hexo-LiveForCode",
+            name : "Hexo - Live For Code"
+        }  
+    };
+</script>
+    <script type="text/javascript" src="/js/index.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

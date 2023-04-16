@@ -45,13 +45,13 @@
                         </span>
                         
                             
-                                <span id="/2023/04/08/java/Java开发环境安装步骤/" class="leancloud_visitors" data-flag-title="Java开发环境安装步骤">
+                                <span id="/2023/04/08/Java/Java开发环境安装步骤/" class="leancloud_visitors" data-flag-title="Java开发环境安装步骤">
                                     <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                                 </span>
                             
                             
                                 <span>
-                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/08/java/Java开发环境安装步骤/"></span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/08/Java/Java开发环境安装步骤/"></span>
                                 </span>
                               
                         
@@ -82,8 +82,8 @@
 <h3 id="1、运行jdk安装包"><a href="#1、运行jdk安装包" class="headerlink" title="1、运行jdk安装包"></a>1、运行jdk安装包</h3><p>一直点击下一步，可以根据需求修改安装路径</p>
 <h3 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h3><pre><code>在我们编译程序时，我们需要用到javac这个编译工具，而javac是在java的安装目录下的，当我们在其他目录调用javac时，系统因为在当前目录找不到就会报错，为了方便我们以后编译程序，不要每次编译的时候就跑到java安装目录中去，所以我们来设置环境变量。
 </code></pre>
-<p>步骤：<br>右击计算机→属性→高级系统设置→高级→环境变量<br><strong>（1）下面系统变量新建：</strong><br>变量名固定，变量值为JDK的安装目录<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409101418523.png" alt="image-20230409101418523"><br><strong>（2）在系统变量中找到”Path” **<br>选中”Path“点击”编辑“选项<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295771424-72bb519c-d5a5-4740-ba98-4be31b318f7a.png#averageHue=%23f0efee&clientId=u1b3c1a24-ff2d-4&from=paste&height=139&id=u3c827f0f&name=1671246293607.png&originHeight=209&originWidth=836&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12407&status=done&style=none&taskId=u1ec7cb7c-5021-428b-9be4-b7031b0b94d&title=&width=557.3333333333334" alt="1671246293607.png"><br><strong>选择右边的“编辑文本”</strong>将引号里面的全部复制</strong>“%Java_Home%\bin;%Java_Home%\jre\bin;”**，点击确定。</p>
-<h3 id="3、查看是否安装成功"><a href="#3、查看是否安装成功" class="headerlink" title="3、查看是否安装成功"></a>3、查看是否安装成功</h3><p>快捷键win+R，输入cmd<br>输入“java”效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295820202-d973d8e8-a1b9-41d8-a6b2-8cc19b53c77d.png#averageHue=%231a1a1a&clientId=u1b3c1a24-ff2d-4&from=paste&height=432&id=u6ec849be&name=1671245522817.png&originHeight=648&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=65474&status=done&style=none&taskId=u9db095d6-fe80-4598-90f4-17269ccbab4&title=&width=438" alt="1671245522817.png"><br>输入javac<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295847392-bf1b377d-2788-47a8-8866-4241deeb70ac.png#averageHue=%231a1a1a&clientId=u1b3c1a24-ff2d-4&from=paste&height=341&id=u670f70ec&name=1671246379294.png&originHeight=511&originWidth=1128&originalType=binary&ratio=1&rotation=0&showTitle=false&size=90805&status=done&style=none&taskId=u9cab4968-c57e-452e-aec2-1c80b15c678&title=&width=752" alt="1671246379294.png"><br>查看版本号，输入“java -version”，效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295866821-169403ab-f9a5-42ed-8e0b-d5a4a7d50dbc.png#averageHue=%231c1c1c&clientId=u1b3c1a24-ff2d-4&from=paste&height=77&id=uda3bb65f&name=1671245554248.png&originHeight=116&originWidth=793&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16272&status=done&style=none&taskId=u5a888e05-8d43-49c0-a085-2ef7abdbd99&title=&width=528.6666666666666" alt="1671245554248.png"></p>
+<p>步骤：<br>右击计算机→属性→高级系统设置→高级→环境变量<br><strong>（1）下面系统变量新建：</strong><br>变量名固定，变量值为JDK的安装目录<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409101418523.png" alt="image-20230409101418523"><br><strong>（2)在系统变量中找到”Path” **<br>选中”Path“点击”编辑“选项<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409143408212.png" alt="image-20230409143408212"><br><strong>选择右边的“编辑文本”</strong>将引号里面的全部复制</strong>“%Java_Home%\bin;%Java_Home%\jre\bin;”**，点击确定。</p>
+<h3 id="3、查看是否安装成功"><a href="#3、查看是否安装成功" class="headerlink" title="3、查看是否安装成功"></a>3、查看是否安装成功</h3><p>快捷键win+R，输入cmd<br>输入“java”效果如下：<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409143449494.png" alt="image-20230409143449494"><br>输入javac<br><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230409143514233.png" alt="image-20230409143514233"><br>查看版本号，输入“java -version”，效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29235260/1674295866821-169403ab-f9a5-42ed-8e0b-d5a4a7d50dbc.png#averageHue=%231c1c1c&clientId=u1b3c1a24-ff2d-4&from=paste&height=77&id=uda3bb65f&name=1671245554248.png&originHeight=116&originWidth=793&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16272&status=done&style=none&taskId=u5a888e05-8d43-49c0-a085-2ef7abdbd99&title=&width=528.6666666666666" alt="1671245554248.png"></p>
 <h2 id="二、安装IDEA永久激活"><a href="#二、安装IDEA永久激活" class="headerlink" title="二、安装IDEA永久激活"></a>二、安装IDEA永久激活</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.exception.site/">https://www.exception.site/</a></p>
 <h3 id="1、下载IDEA"><a href="#1、下载IDEA" class="headerlink" title="1、下载IDEA"></a>1、下载IDEA</h3><ul>
 <li>通过官网下载idea</li>
@@ -135,9 +135,9 @@
     <div class="suffix-box-right">
         <span class="suffix-box-title">文章作者：</span>Life For H
         <br>
-        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/08/java/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/" target="_blank">Java开发环境安装步骤</a>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/08/Java/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/" target="_blank">Java开发环境安装步骤</a>
         <br>
-        <span class="suffix-box-title">作者签名：</span>简单地活着, 肆意又精彩.
+        <span class="suffix-box-title">作者签名：</span>人间枝头，各自乘流。
         <br>
         <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
         <br>
@@ -338,7 +338,7 @@
 
         User             : "Life For H",
         UserAvatar       : "/image/sidebar/img-luhe.jpg",
-        WebsiteStartDate : "2020-01-01",
+        WebsiteStartDate : "2023-04-09",
 
         WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
         WebsiteTitleBlurTimeOut  : 500,
@@ -399,8 +399,6 @@
         },
 
         HomeHeaderImage : [
-            
-                "/image/header/home3.jpg",
             
                 "/image/header/home5.jpg",
             
@@ -802,7 +800,7 @@
         },
 
         Suffix : {
-            about : "简单地活着, 肆意又精彩."
+            about : "人间枝头，各自乘流。"
         },
             
         Theme : {

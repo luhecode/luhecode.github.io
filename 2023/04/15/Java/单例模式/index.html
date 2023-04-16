@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            标签 - 个人博客
+            单例模式
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -32,15 +32,40 @@
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">标签归档</h1>
+                <h1 class="header-subtitle">单例模式</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-04-15
+                        </span>
+                        
+                            
+                                <span id="/2023/04/15/Java/单例模式/" class="leancloud_visitors" data-flag-title="单例模式">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/15/Java/单例模式/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">设计模式</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">设计模式</span>
+                        
+                    
                 </div>
             
         </div>
@@ -49,37 +74,105 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="一、什么是单例模式"><a href="#一、什么是单例模式" class="headerlink" title="一、什么是单例模式"></a>一、什么是单例模式</h2><p>简单来说，单例模式就是用来创建独一无二的对象，只能有一个实例对象。</p>
+<p>单例确保一个类只有一个实例，并提供一个全局的访问点。</p>
+<h3 id="这有什么用处？"><a href="#这有什么用处？" class="headerlink" title="这有什么用处？"></a>这有什么用处？</h3><p>很多时候我们只需要一个对象的情况：线程池、缓存、对话框、日志对象、充当打印机、显卡的设备的驱动对象。事实上，对于这种对象的类型，如果我们实例化超过一个对象，就会碰到各种问题，像程序的行为异常、资源使用过量后者不一致的结果。</p>
+<h3 id="Java中的静态变量也可以做到，为什么要用这个？"><a href="#Java中的静态变量也可以做到，为什么要用这个？" class="headerlink" title="Java中的静态变量也可以做到，为什么要用这个？"></a>Java中的静态变量也可以做到，为什么要用这个？</h3><p>单例模式给我们一个全局的访问点，就像全局变量一样，但是没有全局变量的缺点。</p>
+<h3 id="全局变量有什么缺点？"><a href="#全局变量有什么缺点？" class="headerlink" title="全局变量有什么缺点？"></a>全局变量有什么缺点？</h3><p>当把一个对象赋值给全局变量，那么这个对象可能在应用启动时就被创建，但是如果这个对象是个资源密集型的，而在应用中没有用到他，这样就造成了资源的浪费。</p>
+<h2 id="二、创建单例模式"><a href="#二、创建单例模式" class="headerlink" title="二、创建单例模式"></a>二、创建单例模式</h2><p>当我们创建一个对象的时候怎么做，使用new MyObject();创建，所有人都可以通过这种方式实例化MyObject这个类的对象。我们使用private修饰MyObject这个类的构造器，这样实例化该对象只能在他的类内部。再对外提供一个公共的方法用来创建实例，但是调用方法要创建对象，构造器私有了又不能创建对象，有什么办法呢？在Java中使用static修饰的方法可以直接通过类进行调用，所以我们使用static修饰创建实例的方法。下面创建一个类来实现单例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="comment">// 一个静态变量持有Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造器私有，只有Singleton能够实例化这个类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getInstance()方法提供了一种实例化该类的方式，也返回他的一个实例</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="literal">null</span>)&#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、多线程下的单例"><a href="#三、多线程下的单例" class="headerlink" title="三、多线程下的单例"></a>三、多线程下的单例</h2><p>在多线程的环境下，会出现什么样的问题？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (singleton == <span class="literal">null</span>)&#123;</span><br><span class="line">	singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码，如果执行完判断对象为空之后但还未执行实例化对象的代码时，另一个线程过来，判断也是为空的，这样就创建了两个对象。</p>
+<h3 id="使用同步方法"><a href="#使用同步方法" class="headerlink" title="使用同步方法"></a>使用同步方法</h3><p>通过把getIntance()变成同步(synchronized)方法，可以轻松解决，但是使用同步导致性能开销大，并且此对象第一次被实例化以后，同步就没有用了，对于每次一调用getInstance()都是一种累赘。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="literal">null</span>)&#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决同步开销大方法"><a href="#解决同步开销大方法" class="headerlink" title="解决同步开销大方法"></a>解决同步开销大方法</h3><h4 id="1、用的少，什么都不做"><a href="#1、用的少，什么都不做" class="headerlink" title="1、用的少，什么都不做"></a>1、用的少，什么都不做</h4><p>如果调用getInstance()没有给程序增加很重的负担，这就可以不用考虑。但是，如果代码中高频的使用getInstance()需要重新考虑。</p>
+<h4 id="2、转为饿汉式（急切加载）"><a href="#2、转为饿汉式（急切加载）" class="headerlink" title="2、转为饿汉式（急切加载）"></a>2、转为饿汉式（急切加载）</h4><p>我们之前讲述的单例为懒汉式（用的时候创建），而饿汉式是在类初始化的时候就实例化。</p>
+<p>使用饿汉式的场景：应用总是创建并使用单例，或者单例的创建以及运行时方面负担不重，就可以早点创建单例。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="comment">// 在静态初始化容器中创建单例。这段代码保证是线程的安全</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">// 直接返回实例</span></span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用这个方法，当类被加载时，我们依靠JVM来创建单例的唯一实例。JVM保证在任何线程访问静态singleton变量之前，实例会被创建。</p>
+<h4 id="3、使用“双重检查锁”"><a href="#3、使用“双重检查锁”" class="headerlink" title="3、使用“双重检查锁”"></a>3、使用“双重检查锁”</h4><p>有了双重检查锁，我们首先减产实例是否已经创建，如果没有，才同步，这样，只有第一次才会同步。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="comment">// 使用volatile防止指令重排</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">                    singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、使用枚举"><a href="#4、使用枚举" class="headerlink" title="4、使用枚举"></a>4、使用枚举</h4><p>上述方法还是存在一些问题，比如类加载问题、反射和序列化&#x2F;反序列化问题，都可以通过使用枚举来创建单例解决。</p>
+<p>这是目前最简单的单例了，那为什么之前要说一遍创建一个带getinstance()方法的单间呢？目的是真真正正的了解单间如何工作，知道了这些之后，在任何需要单例的时候都使用枚举，并且在被问道“不用枚举怎么实现单例”，就知道怎么回答了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    UNIQUE_INSTANCE;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> Singleton.UNIQUE_INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><ul>
+<li>单例模式确保应用中一个类最多只有一个实例。</li>
+<li>单例模式也是提供访问此实例的全局点。</li>
+<li>Java的单例实现了一个私有构造器、一个静态方法以及一个静态变量。</li>
+<li>检查你的性能和资源资源约束，为多线程应用小心选择一个适当的单例实现（我们应该把所有应用都考虑为是多线程的）。</li>
+<li>提防双重检查锁实现。Java5之前的版本，不是线程安全的。</li>
+<li>如果使用多个类加载器，要小心，可能导致单例实现失效，导致出现多个实例。</li>
+<li>可以使用Java的枚举来简化单例的实现。</li>
+</ul>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/img-luhe.jpg" alt="Life For H">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Life For H
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_blank">单例模式</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>人间枝头，各自乘流。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
                         
-                            当前标签：<span class="tag">个人博客</span>
+                            <a href="/category/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
                         
-                    </span>
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
                     
                     
-                        
-                            <div class="archive-title">
-                                <h2 class="archive-year">2023</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span>hexo + github搭建个人博客</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-09</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/" class="next-prefix">» </a> 下一篇：    <a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/" title="发布于 2023-04-10 04:44">市场监管局点餐小程序项目复盘</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
