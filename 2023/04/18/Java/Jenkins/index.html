@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            归档
+            Jenkins
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -32,15 +32,32 @@
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">归档</h1>
+                <h1 class="header-subtitle">Jenkins</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-04-18
+                        </span>
+                        
+                            
+                                <span id="/2023/04/18/Java/Jenkins/" class="leancloud_visitors" data-flag-title="Jenkins">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/18/Java/Jenkins/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                    
                 </div>
             
         </div>
@@ -49,97 +66,64 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
-                        
-                            目前共计 7 篇日志，继续加油！
-                        
-                    </span>
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h1><h2 id="一、什么是jenkins"><a href="#一、什么是jenkins" class="headerlink" title="一、什么是jenkins"></a>一、什么是jenkins</h2><p>Jenkins是一种开源的持续集成和持续交付工具，可以自动化构建、测试和部署软件项目。它可以与许多不同类型的工具和技术集成，如Git、Maven、Docker等，是许多软件开发团队中不可缺少的工具之一。Jenkins有一个强大的插件生态系统，可以满足各种不同的需求，使得它可以适应不同的软件开发流程。它的主要目标是提高软件开发的效率和质量，减少手动操作的错误和浪费。</p>
+<h2 id="二、下载"><a href="#二、下载" class="headerlink" title="二、下载"></a>二、下载</h2><p>去官网下载jenkins需要的war,注意，目前官网下载的需要JDK11以上，使用JDK8的需要下载老版本的jenkins。</p>
+<h2 id="三、运行"><a href="#三、运行" class="headerlink" title="三、运行"></a>三、运行</h2><p>将下载好的war包上传到服务器，创建文件夹&#x2F;home&#x2F;Jenkins&#x2F;，将文件上传到此目录。使用命令运行war包：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar jenkins.war &amp;</span><br></pre></td></tr></table></figure>
+
+<p>查看日志，其中打印了登录的密码，保存密码，后面是密码存放的地址，如果丢失了可以在此文件中查找。</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230419153731118.png" alt="image-20230419153731118"></p>
+<p>启动成功之后访问地址：</p>
+<p><a target="_blank" rel="noopener" href="http://ip:8080/">http://ip:8080</a></p>
+<p>复制粘贴密码，安装插件时选择安装推荐的插件。安装完插件之后，创建一个用户。</p>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2>
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/img-luhe.jpg" alt="Life For H">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Life For H
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/18/Java/Jenkins/" target="_blank">Jenkins</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>人间枝头，各自乘流。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                
+                <div class="article-prev-next">
                     
                     
-                        
-                            <div class="archive-title">
-                                <h2 class="archive-year">2023</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/18/Java/Jenkins/"><span>Jenkins</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-18</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/17/Java/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"><span>工厂模式</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-17</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"><span>单例模式</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-15</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/13/Java/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4(%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB)/"><span>项目部署到服务器详细步骤(前后端分离)</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-13</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E7%82%B9%E9%A4%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/"><span>市场监管局点餐小程序项目复盘</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-10</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span>hexo + github搭建个人博客</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-09</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/08/Java/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/"><span>Java开发环境安装步骤</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-08</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2023/04/17/Java/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="next-prefix">» </a> 下一篇：    <a href="/2023/04/17/Java/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="发布于 2023-04-17 01:23">工厂模式</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
@@ -173,7 +157,7 @@
                     
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
-                        <li class=" active "><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
                         <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
                     

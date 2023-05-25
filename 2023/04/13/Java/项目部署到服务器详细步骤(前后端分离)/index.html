@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            归档
+            项目部署到服务器详细步骤(前后端分离)
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -32,15 +32,42 @@
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">归档</h1>
+                <h1 class="header-subtitle">项目部署到服务器详细步骤(前后端分离)</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-04-13
+                        </span>
+                        
+                            
+                                <span id="/2023/04/13/Java/项目部署到服务器详细步骤(前后端分离)/" class="leancloud_visitors" data-flag-title="项目部署到服务器详细步骤(前后端分离)">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/04/13/Java/项目部署到服务器详细步骤(前后端分离)/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">Java</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">Java</span>
+                        
+                            <span class="tag-color">部署</span>
+                        
+                    
                 </div>
             
         </div>
@@ -49,97 +76,140 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="项目部署到服务器详细步骤-前后端分离"><a href="#项目部署到服务器详细步骤-前后端分离" class="headerlink" title="项目部署到服务器详细步骤(前后端分离)"></a>项目部署到服务器详细步骤(前后端分离)</h1><hr>
+<p>第一次在服务器部署的时候遇到了很多坑，记录下防止忘记，本文使用若依框架来做演示。</p>
+<hr>
+<h2 id="一、拉取代码、打包"><a href="#一、拉取代码、打包" class="headerlink" title="一、拉取代码、打包"></a>一、拉取代码、打包</h2><h3 id="1、git拉取代码"><a href="#1、git拉取代码" class="headerlink" title="1、git拉取代码"></a>1、git拉取代码</h3><p>在github或gitee上拉取代码的方式有两种，一种是代码下载成压缩包，将压缩包解压到指定的文件夹下，一种是使用命令，在存储代码的文件夹下打开Git Bash Here窗口，输入git clone xxx(代码地址)，这种方式我感觉要比下载压缩包方便很多，用idea打开此代码后会直接关联git的账号及分支，我们可以直接拉取或提交代码（拉取别人的代码需要修改提交地址）。而下载的需要在idea中连接git，有几次连接不上，我感觉不是很方便。</p>
+<p><strong>git项目界面：</strong></p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230413172333173.png" alt="image-20230413172333173"></p>
+<p><strong>Git Bash Here窗口：</strong></p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230413174814805.png" alt="image-20230413174814805"></p>
+<p>拉取代码之后，要想项目跑起来需要修改配置文件中的mysql连接信息、reids、以及在mysql中执行准备好的sql脚本，后端就可以正常运行了。</p>
+<p>右击前端文件夹ruoyi-ui点击Open In选择Terminal打开控制台相当于windows的cmd</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230413175400178.png" alt="image-20230413175400178"></p>
+<p>输入npm install命令安装前端项目，前提是要安装node.js，执行完之后输入npm run dev运行项目，运行成功会自动打开浏览器，后端正常运行会生成验证码，至此项目可正常使用。</p>
+<h3 id="2、上传项目"><a href="#2、上传项目" class="headerlink" title="2、上传项目"></a>2、上传项目</h3><p>修改项目信息，这个项目就是我们自己的项目了，需要把项目上传到我们自己的git仓库。首先要在gitee或github上创建仓库，生成仓库的地址https.xxxx。在idea中push项目是填入仓库地址就把项目提交到对应的仓库中了。</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230414134327811.png" alt="image-20230414134327811"></p>
+<h3 id="3、项目打包"><a href="#3、项目打包" class="headerlink" title="3、项目打包"></a>3、项目打包</h3><h4 id="后端使用maven打包"><a href="#后端使用maven打包" class="headerlink" title="后端使用maven打包"></a>后端使用maven打包</h4><p>方法一：</p>
+<p>在idea中使用maven插件进行打包，maven clean 删除target目录下所有生成的文件，再运用maven install将项目构建输出到本地仓库中，最后使用maven package对项目进行打包。打包成功之后会在项目的target文件夹下生成一个jar包，如果打包方式为war则生成war包。</p>
+<p>jar包包含了Java程序的类、资源、配置文件等，jar包通常用于打包Java程序的库或应用程序。而war包中包含了Web应用程序的所有内容，如JSP、Servlet、HTML、CSS、JavaScript、图片、配置文件等。war包通常用于部署Web应用程序到Web容器（如Tomcat）中。</p>
+<p>在项目pom文件中选择要打什么样的包，排除SpringBoot中内嵌的tomcat，使其在测试的时候不生效。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    &lt;modelVersion&gt;<span class="number">4.0</span><span class="number">.0</span>&lt;/modelVersion&gt;</span><br><span class="line">    &lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">&lt;!--    &lt;packaging&gt;war&lt;/packaging&gt;--&gt;</span><br><span class="line">    &lt;artifactId&gt;ruoyi-admin&lt;/artifactId&gt;</span><br><span class="line">        </span><br><span class="line">&lt;!-- 多模块排除内置tomcat --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">	&lt;exclusions&gt;</span><br><span class="line">		&lt;exclusion&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</span><br><span class="line">		&lt;/exclusion&gt;</span><br><span class="line">	&lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">		</span><br><span class="line">&lt;!-- 单应用排除内置tomcat --&gt;		</span><br><span class="line">&lt;exclusions&gt;</span><br><span class="line">	&lt;exclusion&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;/exclusion&gt;</span><br><span class="line">&lt;/exclusions&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>方法二：</p>
+<p>直接在服务器上打包。首先要确定自己的Linux服务器是否配置了maven、git的环境，没有可以查询有了这些环境之后就可以进行接下来的操作了。创建文件夹用来存储代码，使用git clone 命令将代码拉取到当前文件夹下，输入git的账号和密码。进入代码文件夹下输入mvn clean清除，在输入mvn package命令打包，成功之后在项目target目录下生成jar包。</p>
+<p><strong>拉取代码：</strong></p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230414173434432.png" alt="image-20230414173434432"></p>
+<p><strong>打包：</strong></p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230417132843802.png" alt="image-20230417132843802"></p>
+<h3 id="前端打包"><a href="#前端打包" class="headerlink" title="前端打包"></a>前端打包</h3><p>把前端项目在Terminal打开，输入命令:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 打包正式环境</span><br><span class="line">npm run build:prod</span><br></pre></td></tr></table></figure>
+
+<p>命令的配置在package.json文件中，可以针对不同的环境进行打包</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230417133818294.png" alt="image-20230417133818294"></p>
+<p>打包成功之后，会在前端项目的根目录生成dist文件夹，里面就是构建打包好的文件，通常是 <code>***.js</code> 、<code>***.css</code>、<code>index.html</code> 等静态文件。</p>
+<h2 id="二、后端部署"><a href="#二、后端部署" class="headerlink" title="二、后端部署"></a>二、后端部署</h2><h3 id="1、jar包部署"><a href="#1、jar包部署" class="headerlink" title="1、jar包部署"></a>1、jar包部署</h3><p>将准备好的jar包上传到指定的目录，本地打包的可以直接上传目录中，使用git拉取的可以将jar包复制到目录中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp ruoyi-admin.jar /mydata/my_code/bushu/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>切换到jar包的文佳夹下，使用命令启动项目：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar ruoyi-admin.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>&amp;符号通常表示在后台运行某个程序或命令，也就是将其置于后台运行。这样可以继续使用命令行界面，同时也可以让程序在后台持续运行，直到被手动停止或该程序运行完毕。</p>
+<p>我们可以通过nohup.out文件查看项目中的日志。通过命令查看项目是否正常启动：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep java</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230417135649513.png" alt="image-20230417135649513"></p>
+<p>出现了我们的项目，这样就启动成功了。</p>
+<p>如果更新代码之后，可以将之前的jar包删除，或者为了稳妥重新命名，再将新的jar包上传到目录下，先执行命令停止项目：kill  -9 “进程号”，再执行启动项目的命令，这样项目就更新成功了。</p>
+<p>完成之后，我们可以在浏览器中输入：服务器ip：项目端口号，如果出现一行字则访问成功。注意：服务器需要设置防火墙，开放我们项目的端口号。</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230417140843483.png" alt="image-20230417140843483"></p>
+<h3 id="2、war包部署"><a href="#2、war包部署" class="headerlink" title="2、war包部署"></a>2、war包部署</h3><p>首先使用kill -9 “PID”将用jar包启动的项目停止，然后将打好的war包放入Tomcat的webapps目录下面。进入到bin目录下输入.&#x2F;startup.sh命令启动tomcat，启动成功后，在浏览器中输入ip+8080端口号，出现tomcat的猫页面为成功。如果想要访问项目则需要在路径后面添加pom文件中artifactId标签的内容。</p>
+<p>如果要修改路径的访问方式，也就是不加前缀，需要修改tomcat的conf文件下的server.xml文件，在Host标签下面添加一行：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">&quot;/&quot;</span> <span class="attr">reloadable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">docBase</span>=<span class="string">&quot;/home/tomcat/apache-tomcat-9.0.73/webapps/ruoyi-admin&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>docBase为上传war文件夹的全路径。</p>
+<p>重新启动Tomcat，浏览器输入ip+8080，出现后端接口访问页面，后端部署成功。如果有多个war包则需要复制webapps并重新命名，修改servel.xml文件。</p>
+<h2 id="三、前端部署"><a href="#三、前端部署" class="headerlink" title="三、前端部署"></a>三、前端部署</h2><h3 id="1、上传文件"><a href="#1、上传文件" class="headerlink" title="1、上传文件"></a>1、上传文件</h3><p>将打包好的dist文件夹上传到服务器指定文件夹下。</p>
+<h3 id="2、配置nginx"><a href="#2、配置nginx" class="headerlink" title="2、配置nginx"></a>2、配置nginx</h3><p>前端需要nginx进行转发，所以首先要安装好nginx。安装好nginx之后，配置nginx的配置文件nginx.conf，安装目录默认为&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;下。最开始我使用的是docker中安装的，但是出现了各种问题，比如配置文件修改完之后不生效等问题，浪费了很多时间，所以说运用docker的能力还需要加强啊。</p>
+<p>配置前端，设置路径为&#x2F;也就是ip地址不加任何前缀，访问的就是下面代码块。root为前端代码的绝对路径，index为访问的页面。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#前端页面</span><br><span class="line">      location / &#123;</span><br><span class="line">          root   /mydata/my_code/qd_data/dist;</span><br><span class="line">          index  index.html index.htm;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完之后，进入到sbin目录使用命令.&#x2F;启动nginx。如果nginx已经启动使用.&#x2F;nginx -s stop命令停止，再启动。</p>
+<p>重启之后在浏览器通过ip+80端口访问前端页面，如果出现若依页面则成功。但是此时的页面是加载不出来验证码的，也就是不能访问后端，因为我们没有在nginx中配置后端。在配置后端之前我们按F12查看接口调用情况，发现有前缀，这个需要进行配置，要不前端还是访问不到后端的接口。</p>
+<p><img src="https://luhe-blog.oss-cn-beijing.aliyuncs.com/blog-java/image-20230417164813707.png" alt="image-20230417164813707"></p>
+<p>nginx中的配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 若依后端</span><br><span class="line">      location /prod-api/ &#123;</span><br><span class="line">          proxy_pass http://121.4.49.190:8080/;</span><br><span class="line">             proxy_connect_timeout 60s;</span><br><span class="line">             proxy_send_timeout 60s;</span><br><span class="line">             proxy_read_timeout 60s;</span><br><span class="line">             proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存后重启nginx，在浏览器中打开前端页面，发现验证码加载出来了，可以正常调用后端接口，至此项目部署成功 。</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>这种部署方式非常的麻烦以及浪费时间，所以，为了更注重在编码上，还是要学习更先进的技术，比如Jenkins等</p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/img-luhe.jpg" alt="Life For H">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Life For H
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/04/13/Java/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4(%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB)/" target="_blank">项目部署到服务器详细步骤(前后端分离)</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>人间枝头，各自乘流。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
                         
-                            目前共计 7 篇日志，继续加油！
+                            <a href="/category/Java/">Java</a>
                         
-                    </span>
-                    
-                    
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
                         
-                            <div class="archive-title">
-                                <h2 class="archive-year">2023</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/18/Java/Jenkins/"><span>Jenkins</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-18</span>
-                                </div>
-                            </div>
-                        </div>
+                            <a href="/tag/Java/">Java</a>
+                        
+                            <a href="/tag/%E9%83%A8%E7%BD%B2/">部署</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/17/Java/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"><span>工厂模式</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-17</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev-prefix">« </a> 上一篇：    <a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="发布于 2023-04-15 05:16">单例模式</a>
+                        <br>
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/15/Java/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"><span>单例模式</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-15</span>
-                                </div>
-                            </div>
-                        </div>
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/13/Java/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4(%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB)/"><span>项目部署到服务器详细步骤(前后端分离)</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-13</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E7%82%B9%E9%A4%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/"><span>市场监管局点餐小程序项目复盘</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-10</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/09/hexo/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span>hexo + github搭建个人博客</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-09</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/04/08/Java/Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/"><span>Java开发环境安装步骤</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">04-08</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E7%82%B9%E9%A4%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/" class="next-prefix">» </a> 下一篇：    <a href="/2023/04/10/%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%E5%A4%8D%E7%9B%98/%E7%82%B9%E9%A4%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/" title="发布于 2023-04-10 04:44">市场监管局点餐小程序项目复盘</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
@@ -173,7 +243,7 @@
                     
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
-                        <li class=" active "><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
                         <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
                     
